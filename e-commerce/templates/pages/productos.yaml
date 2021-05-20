@@ -1,0 +1,10 @@
+title: lista de productos
+renderType: freemarker
+dialog: 
+templateScript: /e-commerce/templates/pages/productos.ftl
+areas:
+  main:
+    type: list
+    availableComponents:
+      form:
+        id: e-commerce:components/listaProductos

@@ -1,0 +1,3 @@
+title: Detalles del producto
+renderType: freemarker
+templateScript: /e-commerce/templates/components/detallesProducto.ftl

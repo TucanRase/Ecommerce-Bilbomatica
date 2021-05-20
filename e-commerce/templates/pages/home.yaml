@@ -1,0 +1,10 @@
+title: home
+renderType: freemarker
+dialog: 
+templateScript: /e-commerce/templates/pages/home.ftl
+areas:
+  main:
+    type: list
+    availableComponents:
+      form:
+        id: e-commerce:components/muestra

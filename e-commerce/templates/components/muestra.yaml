@@ -1,0 +1,3 @@
+title: Muestra inicio
+renderType: freemarker
+templateScript: /e-commerce/templates/components/muestra.ftl

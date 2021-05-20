@@ -1,0 +1,22 @@
+datasource:
+  workspace: inventario
+  rootPath: /
+  namespaces:
+    lib: https://www.magnolia-travel.com/jcr/1.0/lib
+  autoCreate: true
+
+model:
+  nodeType: producto
+  properties:
+    - name: id
+      label: ID
+    - name: precio
+      label: Precio
+    - name: stock
+      label: Stock
+    - name: nombre
+      label: Nombre
+    - name: imagen
+      label: imagen
+    - name: detalles
+      label: Detalles

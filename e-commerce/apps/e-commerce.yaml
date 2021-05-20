@@ -1,0 +1,192 @@
+label: E-commerce
+appClass: e.commerce.Ecommerce
+class: info.magnolia.ui.contentapp.ContentAppDescriptor
+name: ecommerce
+icon: icon-paid
+subApps:
+  browser:
+    label: E-commerce
+    subAppClass: info.magnolia.ui.contentapp.browser.BrowserSubApp
+    class: info.magnolia.ui.contentapp.browser.BrowserSubAppDescriptor
+    contentConnector:
+      includeProperties: false
+      workspace: inventario
+      rootPath: /
+      defaultOrder: jcrName
+      nodeTypes:
+        - name: producto
+          strict: true
+    workbench:
+      dropConstraintClass: info.magnolia.ui.workbench.tree.drop.AlwaysTrueDropConstraint
+      editable: false
+      contentViews:
+        - name: tree
+          class: info.magnolia.ui.workbench.tree.TreePresenterDefinition
+          columns: &myColumns
+            - name: id
+              label: id
+              propertyName: id
+              sortable: true
+              width: 300
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: precio
+              label: Precio
+              propertyName: precio
+              sortable: true
+              width: 50
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: stock
+              label: Stock
+              propertyName: stock
+              sortable: true
+              width: 50
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: categoria
+              label: Categoria
+              propertyName: categoria
+              sortable: true
+              width: 500
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: nombre
+              label: Nombre
+              propertyName: nombre
+              sortable: true
+              width: 300
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: imagen
+              label: Imagen
+              propertyName: imagen
+              sortable: true
+              width: 500
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: detalles
+              label: Detalles
+              propertyName: detalles
+              sortable: true
+              width: 500
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+    actions:
+      addProducto:
+        appName: ecommerce
+        class: info.magnolia.ui.contentapp.detail.action.CreateItemActionDefinition
+        subAppId: detail
+        icon: icon-add-item
+        nodeType: producto
+        availability:
+          root: true
+          label: ecommerceAction
+          nodes: false
+        label: Nuevo Producto
+
+      editProducto:
+        appName: ecommerce
+        subAppId: detail
+        class: info.magnolia.ui.contentapp.detail.action.EditItemActionDefinition
+        dialogName: ecommerce:productoEditor
+        nodeType: producto
+        icon: icon-edit
+        availability:
+          root: true
+        label: Editar Producto
+      
+      deleteProducto:
+        appName: ecommerce
+        class: info.magnolia.ui.framework.action.DeleteItemActionDefinition
+        icon: icon-delete
+        nodeType: producto
+        availability:
+          multiple: true
+          properties: true
+          writePermissionRequired: true
+          root: true
+        label: Borrar Producto
+    actionbar:
+      defaultAction: editProducto
+      sections:
+        - name: root
+          groups:
+            - name: edit
+              items:
+                - name: addProducto
+                - name: editProducto
+                - name: deleteProducto
+          availability:
+            root: true
+            label: ecommerceAction
+  detail:
+    subAppClass: info.magnolia.ui.contentapp.detail.DetailSubApp
+    class: info.magnolia.ui.contentapp.detail.DetailSubAppDescriptor
+    contentConnector:
+      #includeProperties: false
+      workspace: inventario
+      rootPath: /
+    actions: 
+      commit:
+        implementationClass: info.magnolia.ui.form.action.SaveFormAction
+        class: info.magnolia.ui.form.action.SaveFormActionDefinition
+      cancel:
+        class: info.magnolia.ui.form.action.CancelFormActionDefinition
+    editor:
+      nodeType:
+        icon: icon-node-content
+        name: producto
+      form:
+        tabs:
+          -name: producto
+          default:
+            name: Productos
+            fields:
+              - name: id
+                label: ID
+                fieldType: text
+                rows: 1
+                required: true
+              - name: precio
+                label: Precio
+                fieldType: text
+                rows: 1
+                required: true
+              - name: stock
+                label: Stock
+                fieldType: text
+                rows: 1
+                required: true
+              - name: categoria
+                label: Categoria
+                fieldType: select
+                options:
+                  - name: ropa
+                    label: Ropa
+                    value: ropa
+                  - name: perifericos
+                    label: Perifericos
+                    value: perifericos
+                  - name: electrodomesticos
+                    label: Electrodomesticos
+                    value: electrodomesticos
+                
+                required: true
+              - name: nombre
+                label: Nombre
+                fieldType: text
+                rows: 1
+                required: true
+              - name: imagen
+                label: Selecciona la imagen
+                class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+                targetWorkspace: dam/imagenes-tienda
+                appName: assets
+                identifierToPathConverter:
+                  class: info.magnolia.dam.app.assets.field.translator.AssetCompositeIdKeyTranslator
+                contentPreviewDefinition:
+                  contentPreviewClass: info.magnolia.dam.app.ui.field.DamFilePreviewComponent
+                rows: 1
+                required: true
+              - name: detalles
+                label: detalles
+                fieldType: text
+                rows: 4
+                required: true
+      actions:
+        - name: commit
+        - name: cancel
