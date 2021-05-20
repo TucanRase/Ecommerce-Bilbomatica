@@ -1,0 +1,10 @@
+templateScript: /e-commerce/templates/pages/dummy-page.ftl
+renderType: freemarker
+visible: true
+dialog: e-commerce:pages/dummy-page-properties
+areas:
+  main:
+    renderType: freemarker
+    availableComponents:
+      dummy-component:
+        id: e-commerce:components/dummy-component
