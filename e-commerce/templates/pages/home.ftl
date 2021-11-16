@@ -7,14 +7,20 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <style>
         .card{
-            margin:0.3rem
+            margin-right:0.3rem;
+            margin-left:0.3rem
         }
         .navbar{
                 background-color: #f2f2f2 !important;
             }
-            footer{
+        footer{
                 background-color: #f2f2f2 !important;
             }
+        .display-3, .display-5{
+            text-align:center;
+        }
+        .display-5{margin-bottom:-0.8rem}
+        body { padding-bottom: 50px; }
         </style>
          
         <title>Home</title>
@@ -29,12 +35,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item ">
                 [#assign navParentItem = navfn.rootPage(content)!]
                 [#if navParentItem??]
                 [#assign navItems = navfn.navItems(navParentItem)]
                 [#list navItems as navItem]
-                    <a class="nav-link" href="${cmsfn.link(navItem)!}">Listado de productos <span class="sr-only"></span></a>
+                    <a class="nav-link" href="${cmsfn.link(navItem)!}?filtro=categoria">Listado de productos <span class="sr-only"></span></a>
                 [/#list]
                 [/#if]
             </li>
@@ -45,14 +51,15 @@
         </div>
         </nav>
         <div class="container">
-            <h1 class="display-1">PRODUCTOS DESTACADOS</h1>
+            <h1 class="display-3">PRODUCTOS DESTACADOS</h1>
+            <h6 class="display-5">Precio inferior a 60€</h6>
             <div class="col-12">
 
 
             [@cms.area name="main" /]
             </div>
         </div>
-        <footer class="page-footer font-small blue">
+        <footer class="page-footer font-small fixed-bottom">
             <div class="footer-copyright text-center py-3">© Plataforma ecommerce:
                 <a href="https://www.bilbomatica.es/"> BILBOMATICA.ES</a>
             </div>

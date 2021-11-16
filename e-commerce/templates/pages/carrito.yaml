@@ -1,0 +1,10 @@
+title: carrito de la compra
+renderType: freemarker
+dialog: 
+templateScript: /e-commerce/templates/pages/carrito.ftl
+areas:
+  main:
+    type: list
+    availableComponents:
+      form:
+          id: e-commerce:components/carrito

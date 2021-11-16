@@ -20,3 +20,7 @@ model:
       label: imagen
     - name: detalles
       label: Detalles
+    - name: marca
+      label: marca
+    - name: peso
+      label: peso

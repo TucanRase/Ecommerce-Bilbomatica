@@ -45,7 +45,7 @@ subApps:
               label: Categoria
               propertyName: categoria
               sortable: true
-              width: 500
+              width: 100
               class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
             - name: nombre
               label: Nombre
@@ -57,13 +57,25 @@ subApps:
               label: Imagen
               propertyName: imagen
               sortable: true
-              width: 500
+              width: 350
               class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
             - name: detalles
               label: Detalles
               propertyName: detalles
               sortable: true
               width: 500
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: marca
+              label: Marca 
+              propertyName: marca
+              sortable: true
+              width: 100
+              class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
+            - name: peso
+              label: Peso
+              propertyName: peso
+              sortable: true
+              width: 50
               class: info.magnolia.ui.workbench.column.definition.PropertyColumnDefinition
     actions:
       addProducto:
@@ -155,15 +167,15 @@ subApps:
                 label: Categoria
                 fieldType: select
                 options:
-                  - name: ropa
+                  - name: Ropa
                     label: Ropa
-                    value: ropa
-                  - name: perifericos
+                    value: Ropa
+                  - name: Perifericos
                     label: Perifericos
-                    value: perifericos
-                  - name: electrodomesticos
+                    value: Perifericos
+                  - name: Electrodomesticos
                     label: Electrodomesticos
-                    value: electrodomesticos
+                    value: Electrodomesticos
                 
                 required: true
               - name: nombre
@@ -174,18 +186,27 @@ subApps:
               - name: imagen
                 label: Selecciona la imagen
                 class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
-                targetWorkspace: dam/imagenes-tienda
+                targetWorkspace: dam
                 appName: assets
                 identifierToPathConverter:
                   class: info.magnolia.dam.app.assets.field.translator.AssetCompositeIdKeyTranslator
                 contentPreviewDefinition:
                   contentPreviewClass: info.magnolia.dam.app.ui.field.DamFilePreviewComponent
-                rows: 1
                 required: true
               - name: detalles
                 label: detalles
                 fieldType: text
                 rows: 4
+                required: true
+              - name: marca
+                label: marca
+                fieldType: text
+                rows: 1
+                required: true
+              - name: peso
+                label: peso
+                fieldType: text
+                rows: 1
                 required: true
       actions:
         - name: commit

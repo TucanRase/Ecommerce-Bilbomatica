@@ -1,0 +1,3 @@
+title: Carrito de la compra
+renderType: freemarker
+templateScript: /e-commerce/templates/components/carrito.ftl

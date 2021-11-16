@@ -17,7 +17,7 @@
         </style>
     </head>
      
-    <body>
+    <body style="max-width: 100%;max-height: 70vh;">
     [#assign navigationRootPage = navfn.rootPage(content)!]
     [#assign subNavigationRootPage = navfn.ancestorPageAtLevel(content, 2)!]
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${cmsfn.link(subNavigationRootPage)!}">Listado de productos <span class="sr-only"></span></a>
+                <a class="nav-link" href="${cmsfn.link(subNavigationRootPage)!}?filtro=categoria">Listado de productos <span class="sr-only"></span></a>
             </li>
             </ul>
             <span class="navbar-text">
@@ -36,11 +36,10 @@
             </span>
         </div>
         </nav>
-        <h1 style="text-align:center">Nombre del producto</h1>
-        <div class="container">  
+        <div class="container" >  
             [@cms.area name="main" /]
         </div>
-        <footer class="page-footer font-small blue">
+        <footer class="page-footer font-small fixed-bottom">
             <div class="footer-copyright text-center py-3">© Plataforma ecommerce:
                 <a href="https://www.bilbomatica.es/"> BILBOMATICA.ES</a>
             </div>
